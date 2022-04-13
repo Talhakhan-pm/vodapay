@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_13_000207) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_13_010100) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -60,6 +60,25 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_13_000207) do
     t.index ["merchant_id"], name: "index_basic_verifications_on_merchant_id"
   end
 
+  create_table "business_verifications", force: :cascade do |t|
+    t.integer "merchant_id", null: false
+    t.string "business_name"
+    t.string "ein"
+    t.integer "entity_type", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["merchant_id"], name: "index_business_verifications_on_merchant_id"
+  end
+
+  create_table "identity_verifications", force: :cascade do |t|
+    t.integer "merchant_id", null: false
+    t.string "ssn"
+    t.string "dl_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["merchant_id"], name: "index_identity_verifications_on_merchant_id"
+  end
+
   create_table "merchants", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -96,4 +115,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_13_000207) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "basic_verifications", "merchants"
+  add_foreign_key "business_verifications", "merchants"
+  add_foreign_key "identity_verifications", "merchants"
 end

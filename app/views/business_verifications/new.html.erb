@@ -1,0 +1,8 @@
+<%= form_with model: [@merchant, BusinessVerification.new] do |form| %>
+
+  <%= form.label :ein, "EIN" %>
+  <%= form.text_field :ein %>
+
+  <%= form.submit %>
+  
+<% end %>

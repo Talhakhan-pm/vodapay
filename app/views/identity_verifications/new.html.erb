@@ -1,0 +1,8 @@
+<%= form_with model: [@merchant, IdentityVerification.new] do |form| %>
+
+  <%= form.label :ssn, "SSN" %>
+  <%= form.text_field :ssn %>
+
+  <%= form.submit %>
+  
+<% end %>

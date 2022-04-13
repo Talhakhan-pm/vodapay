@@ -3,7 +3,7 @@ class BasicVerificationsController < ApplicationController
 
   def create
     @merchant.basic_verifications.create! params.required(:basic_verification).permit(:address_1, :city, :state, :zip)
-    redirect_to merchant_basic_verifications_path
+    redirect_to new_merchant_identity_verification_path(@merchant)
   end
 
 
