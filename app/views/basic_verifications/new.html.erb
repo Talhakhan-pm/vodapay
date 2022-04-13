@@ -1,0 +1,14 @@
+<%= form_with model: [@merchant, BasicVerification.new] do |form| %>
+
+  <%= form.label :address_1 %>
+  <%= form.text_field :address_1 %>
+  <%= form.label :city %>
+  <%= form.text_field :city %>
+  <%= form.label :state %>
+  <%= form.text_field :state %>
+  <%= form.label :zip %>
+  <%= form.text_field :zip %>
+
+  <%= form.submit %>
+  
+<% end %>
